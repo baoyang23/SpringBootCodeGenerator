@@ -21,6 +21,7 @@ public interface ${clazzName}Mapper {
     <#list queryInfoList as query>
         // ${query.notes}
         ${query.funcRespType} ${query.funName}(<#if query.paramJson?exists><#list query.paramJson?keys as key>@Param("${key}") ${query.paramJson[key]} ${key}<#if key_has_next>,</#if></#list></#if>);
+
     </#list>
 
 

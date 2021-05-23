@@ -37,4 +37,7 @@ public class QueryInfo {
     // 方法返回类型
     private String funcRespType;
 
+
+    private String logicType;
+
 }

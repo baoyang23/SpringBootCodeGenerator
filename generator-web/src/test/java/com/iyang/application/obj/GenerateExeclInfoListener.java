@@ -30,7 +30,7 @@ public class GenerateExeclInfoListener extends AnalysisEventListener<GenerateExe
     @Override
     public void invoke(GenerateExeclInfo generateExeclInfo, AnalysisContext analysisContext) {
 
-        log.info("读取execl 每行的数据 ---> {} "  , generateExeclInfo);
+        // log.info("读取execl 每行的数据 ---> {} "  , generateExeclInfo);
         List<GenerateExeclInfo> infos = CLAZZ_NAME_MAP.getOrDefault(generateExeclInfo.getClazzName(), new ArrayList<>());
         infos.add(generateExeclInfo);
         CLAZZ_NAME_MAP.put(generateExeclInfo.getClazzName(),infos);
@@ -43,8 +43,8 @@ public class GenerateExeclInfoListener extends AnalysisEventListener<GenerateExe
 
         Map<String, List<GenerateExeclInfo>> listMap = CLASS_NAME_LIST.stream().collect(Collectors.groupingBy(GenerateExeclInfo::getClazzName));
 
-        log.info("the listMap 转化后的值是 ---> {} " , JSON.toJSONString(listMap));
-        log.info("the CLAZZ_NAME_MAP 转化后的值是 ---> {} " , JSON.toJSONString(CLAZZ_NAME_MAP));
+       // log.info("the listMap 转化后的值是 ---> {} " , JSON.toJSONString(listMap));
+       //  log.info("the CLAZZ_NAME_MAP 转化后的值是 ---> {} " , JSON.toJSONString(CLAZZ_NAME_MAP));
 
         // 生成 controller / mapper / mapper.xml 文件.
         // 生成 xml 文件
@@ -60,7 +60,7 @@ public class GenerateExeclInfoListener extends AnalysisEventListener<GenerateExe
             List<QueryInfo> queryInfoList = new ArrayList<>(value.size());
             for(GenerateExeclInfo generateExeclInfo : value){
 
-                log.info("generateExeclInfo 遍历数据是 ---> {} " , generateExeclInfo);
+               // log.info("generateExeclInfo 遍历数据是 ---> {} " , generateExeclInfo);
                 QueryInfo info = new QueryInfo();
                 BeanUtils.copyProperties(generateExeclInfo,info);
 
@@ -102,10 +102,10 @@ public class GenerateExeclInfoListener extends AnalysisEventListener<GenerateExe
         }
 
 
-        generateMapperXml(xmlMapperInfoMap);
-        generateMapperInterface(mapperClazzInfoMap);
+        // generateMapperXml(xmlMapperInfoMap);
+        // generateMapperInterface(mapperClazzInfoMap);
         generateServiceImpl(queryServiceImplInfoMap);
-        generateController(controllerInfoMap);
+        // generateController(controllerInfoMap);
 
 
     }

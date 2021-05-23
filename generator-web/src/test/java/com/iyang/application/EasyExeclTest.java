@@ -20,6 +20,18 @@ import org.junit.Test;
 @Slf4j
 public class EasyExeclTest {
 
+    // 生成外国人信息
+    @Test
+    public void generateForeignersInfo(){
+
+        EasyExcel.read("D:\\dtwave\\generateSql.xlsx",
+                GenerateExeclInfo.class,new GenerateExeclInfoListener())
+                .sheet("综合态势大屏")
+                .doRead();
+
+    }
+
+
     @Test
     public void useJsonObjectReadTest(){
 
@@ -27,6 +39,7 @@ public class EasyExeclTest {
                 GenerateExeclInfo.class,new GenerateExeclInfoListener()).sheet().doRead();
 
     }
+
 
     @Test
     public void easyRead(){
